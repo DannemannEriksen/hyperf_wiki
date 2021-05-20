@@ -1,19 +1,19 @@
 # hyperf_wiki
-Hyperf 是基于 Swoole 4.5+ 实现的高性能、高灵活性的 PHP 协程框架，内置协程服务器及大量常用的组件，性能较传统基于 PHP-FPM 的框架有质的提升，提供超高性能的同时，也保持着极其灵活的可扩展性，标准组件均基于 PSR 标准 实现，基于强大的依赖注入设计，保证了绝大部分组件或类都是 可替换 与 可复用 的。
+- Hyperf 是基于 Swoole 4.5+ 实现的高性能、高灵活性的 PHP 协程框架，内置协程服务器及大量常用的组件，性能较传统基于 PHP-FPM 的框架有质的提升，提供超高性能的同时，也保持着极其灵活的可扩展性，标准组件均基于 PSR 标准 实现，基于强大的依赖注入设计，保证了绝大部分组件或类都是 可替换 与 可复用 的。
 
-框架组件库除了常见的协程版的 MySQL 客户端、Redis 客户端，还为您准备了协程版的 Eloquent ORM、WebSocket 服务端及客户端、JSON RPC 服务端及客户端、GRPC 服务端及客户端、Zipkin/Jaeger (OpenTracing) 客户端、Guzzle HTTP 客户端、Elasticsearch 客户端、Consul 客户端、ETCD 客户端、AMQP 组件、Apollo 配置中心、阿里云 ACM 应用配置管理、ETCD 配置中心、基于令牌桶算法的限流器、通用连接池、熔断器、Swagger 文档生成、Swoole Tracker、视图引擎、Snowflake 全局 ID 生成器 等组件，省去了自己实现对应协程版本的麻烦。
+- 框架组件库除了常见的协程版的 MySQL 客户端、Redis 客户端，还为您准备了协程版的 Eloquent ORM、WebSocket 服务端及客户端、JSON RPC 服务端及客户端、GRPC 服务端及客户端、Zipkin/Jaeger (OpenTracing) 客户端、Guzzle HTTP 客户端、Elasticsearch 客户端、Consul 客户端、ETCD 客户端、AMQP 组件、Apollo 配置中心、阿里云 ACM 应用配置管理、ETCD 配置中心、基于令牌桶算法的限流器、通用连接池、熔断器、Swagger 文档生成、Swoole Tracker、视图引擎、Snowflake 全局 ID 生成器 等组件，省去了自己实现对应协程版本的麻烦。
 
-Hyperf 还提供了 基于 PSR-11 的依赖注入容器、注解、AOP 面向切面编程、基于 PSR-15 的中间件、自定义进程、基于 PSR-14 的事件管理器、Redis/RabbitMQ 消息队列、自动模型缓存、基于 PSR-16 的缓存、Crontab 秒级定时任务、国际化、Validation 表单验证器 等非常便捷的功能，满足丰富的技术场景和业务场景，开箱即用。
+- Hyperf 还提供了 基于 PSR-11 的依赖注入容器、注解、AOP 面向切面编程、基于 PSR-15 的中间件、自定义进程、基于 PSR-14 的事件管理器、Redis/RabbitMQ 消息队列、自动模型缓存、基于 PSR-16 的缓存、Crontab 秒级定时任务、国际化、Validation 表单验证器 等非常便捷的功能，满足丰富的技术场景和业务场景，开箱即用。
 
 
-安装
-服务器要求
-Hyperf 对系统环境有一些要求，仅可运行于 Linux 和 Mac 环境下，但由于 Docker 虚拟化技术的发展，在 Windows 下也可以通过 Docker for Windows 来作为运行环境，通常来说 Mac 环境下，我们更推荐本地环境部署，以避免 Docker 共享磁盘缓慢导致 Hyperf 启动速度慢的问题。
+### 安装
+#### 服务器要求
+- Hyperf 对系统环境有一些要求，仅可运行于 Linux 和 Mac 环境下，但由于 Docker 虚拟化技术的发展，在 Windows 下也可以通过 Docker for Windows 来作为运行环境，通常来说 Mac 环境下，我们更推荐本地环境部署，以避免 Docker 共享磁盘缓慢导致 Hyperf 启动速度慢的问题。
 
-hyperf\hyperf-docker 项目内已经为您准备好了各种版本的 Dockerfile ，或直接基于已经构建好的 hyperf\hyperf 镜像来运行。
+- hyperf\hyperf-docker 项目内已经为您准备好了各种版本的 Dockerfile ，或直接基于已经构建好的 hyperf\hyperf 镜像来运行。
 
-当您不想采用 Docker 来作为运行的环境基础时，您需要确保您的运行环境达到了以下的要求：
-
+- 当您不想采用 Docker 来作为运行的环境基础时，您需要确保您的运行环境达到了以下的要求：
+```
 PHP >= 7.3
 Swoole PHP 扩展 >= 4.5，并关闭了 Short Name
 OpenSSL PHP 扩展
@@ -21,65 +21,78 @@ JSON PHP 扩展
 PDO PHP 扩展 （如需要使用到 MySQL 客户端）
 Redis PHP 扩展 （如需要使用到 Redis 客户端）
 Protobuf PHP 扩展 （如需要使用到 gRPC 服务端或客户端）
-安装 Hyperf
-Hyperf 使用 Composer 来管理项目的依赖，在使用 Hyperf 之前，请确保你的运行环境已经安装好了 Composer。
+```
 
-通过 Composer 创建项目
-hyperf/hyperf-skeleton 项目是我们已经为您准备好的一个骨架项目，内置了一些常用的组件及相关配置的文件及结构，是一个可以快速用于业务开发的 Web 项目基础，在安装时，您可根据您自身的需求，对组件依赖进行选择。
+#### 安装 Hyperf
+- Hyperf 使用 Composer 来管理项目的依赖，在使用 Hyperf 之前，请确保你的运行环境已经安装好了 Composer。
+
+##### 通过 Composer 创建项目
+- hyperf/hyperf-skeleton 项目是我们已经为您准备好的一个骨架项目，内置了一些常用的组件及相关配置的文件及结构，是一个可以快速用于业务开发的 Web 项目基础，在安装时，您可根据您自身的需求，对组件依赖进行选择。
 执行下面的命令可以于当前所在位置创建一个 hyperf-skeleton 项目
 
+```
 composer create-project hyperf/hyperf-skeleton
-Copy to clipboardErrorCopied
-Docker 下开发
-假设您的本机环境并不能达到 Hyperf 的环境要求，或对于环境配置不是那么熟悉，那么您可以通过以下方法来运行及开发 Hyperf 项目：
+```
 
-启动镜像
-可以根据实际情况，映射到宿主机对应的目录，以下以 /workspace/skeleton 为例
+##### Docker 下开发
+- 假设您的本机环境并不能达到 Hyperf 的环境要求，或对于环境配置不是那么熟悉，那么您可以通过以下方法来运行及开发 Hyperf 项目：
 
-如果 docker 启动时开启了 selinux-enabled 选项，容器内访问宿主机资源就会受限，所以启动容器时可以增加 --privileged -u root 选项
+##### 启动镜像
+- 可以根据实际情况，映射到宿主机对应的目录，以下以 /workspace/skeleton 为例
 
+- 如果 docker 启动时开启了 selinux-enabled 选项，容器内访问宿主机资源就会受限，所以启动容器时可以增加 --privileged -u root 选项
+
+```
 docker run --name hyperf \
 -v /workspace/skeleton:/data/project \
 -p 9501:9501 -it \
 --privileged -u root \
 --entrypoint /bin/sh \
 hyperf/hyperf:7.4-alpine-v3.11-swoole
-Copy to clipboardErrorCopied
-将 Composer 镜像设置为阿里云镜像，加速国内下载速度
-视情况而定
+```
 
+- 将 Composer 镜像设置为阿里云镜像，加速国内下载速度
+- 视情况而定
+
+```
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer
-Copy to clipboardErrorCopied
-创建项目
+```
+
+##### 创建项目
+```
 cd /data/project
 composer create-project hyperf/hyperf-skeleton
-Copy to clipboardErrorCopied
-启动项目
+```
+
+##### 启动项目
+```
 cd hyperf-skeleton
 php bin/hyperf.php start
-Copy to clipboardErrorCopied
-接下来，就可以在宿主机 /workspace/skeleton/hyperf-skeleton 中看到您安装好的代码了。 由于 Hyperf 是持久化的 CLI 框架，当您修改完您的代码后，通过 CTRL + C 终止当前启动的进程实例，并重新执行 php bin/hyperf.php start 启动命令即可。
+```
 
-存在兼容性问题的扩展
-由于 Hyperf 基于 Swoole 协程实现，而 Swoole 4 带来的协程功能是 PHP 前所未有的，所以与不少扩展都仍存在兼容性的问题。
+- 接下来，就可以在宿主机 /workspace/skeleton/hyperf-skeleton 中看到您安装好的代码了。 由于 Hyperf 是持久化的 CLI 框架，当您修改完您的代码后，通过 CTRL + C 终止当前启动的进程实例，并重新执行 php bin/hyperf.php start 启动命令即可。
+
+##### 存在兼容性问题的扩展
+- 由于 Hyperf 基于 Swoole 协程实现，而 Swoole 4 带来的协程功能是 PHP 前所未有的，所以与不少扩展都仍存在兼容性的问题。
 以下扩展（包括但不限于）都会造成一定的兼容性问题，不能与之共用或共存：
 
-xhprof
-xdebug
-blackfire
-trace
-uopz
+- xhprof
+- xdebug
+- blackfire
+- trace
+- uopz
 
-快速入门
-为了让您更快的了解 Hyperf 的使用，本章节将以 创建一个 HTTP Server 为例，通过对路由、控制器的定义实现一个简单的 Web 服务，但 Hyperf 不止于此，完善的服务治理、gRPC 服务、注解、AOP 等功能将由具体的章节阐述。
+##### 快速入门
+- 为了让您更快的了解 Hyperf 的使用，本章节将以 创建一个 HTTP Server 为例，通过对路由、控制器的定义实现一个简单的 Web 服务，但 Hyperf 不止于此，完善的服务治理、gRPC 服务、注解、AOP 等功能将由具体的章节阐述。
 
-定义访问路由
-Hyperf 使用 nikic/fast-route 作为默认的路由组件并提供服务，您可以很方便的在 config/routes.php 中定义您的路由。
+##### 定义访问路由
+- Hyperf 使用 nikic/fast-route 作为默认的路由组件并提供服务，您可以很方便的在 config/routes.php 中定义您的路由。
 不仅如此，框架还提供了极其强大和方便灵活的 注解路由 功能，关于路由的详情文档请查阅 路由 章节
 
-通过配置文件定义路由
-路由的文件位于 hyperf-skeleton 项目的 config/routes.php ，下面是一些常用的用法示例。
+##### 通过配置文件定义路由
+- 路由的文件位于 hyperf-skeleton 项目的 config/routes.php ，下面是一些常用的用法示例。
 
+```
 <?php
 use Hyperf\HttpServer\Router\Router;
 
@@ -99,18 +112,20 @@ Router::post('/post', [\App\Controller\IndexController::class, 'post']);
 Router::addRoute(['GET', 'POST', 'HEAD'], '/multi', 'App\Controller\IndexController::multi');
 Router::addRoute(['GET', 'POST', 'HEAD'], '/multi', 'App\Controller\IndexController@multi');
 Router::addRoute(['GET', 'POST', 'HEAD'], '/multi', [\App\Controller\IndexController::class, 'multi']);
-Copy to clipboardErrorCopied
-通过注解来定义路由
-Hyperf 提供了极其强大和方便灵活的 注解 功能，在路由的定义上也毫无疑问地提供了注解定义的方式，Hyperf 提供了 @Controller 和 @AutoController 两种注解来定义一个 Controller，此处仅做简单的说明，更多细节请查阅 路由 章节。
+```
 
-通过 @AutoController 注解定义路由
-@AutoController 为绝大多数简单的访问场景提供路由绑定支持，使用 @AutoController 时则 Hyperf 会自动解析所在类的所有 public 方法并提供 GET 和 POST 两种请求方式。
+##### 通过注解来定义路由
+- Hyperf 提供了极其强大和方便灵活的 注解 功能，在路由的定义上也毫无疑问地提供了注解定义的方式，Hyperf 提供了 @Controller 和 @AutoController 两种注解来定义一个 Controller，此处仅做简单的说明，更多细节请查阅 路由 章节。
 
-使用 @AutoController 注解时需 use Hyperf\HttpServer\Annotation\AutoController; 命名空间；
+##### 通过 @AutoController 注解定义路由
+- @AutoController 为绝大多数简单的访问场景提供路由绑定支持，使用 @AutoController 时则 Hyperf 会自动解析所在类的所有 public 方法并提供 GET 和 POST 两种请求方式。
 
-驼峰命名的控制器，会自动转化为蛇形路由，以下为控制器与实际路由的对应关系示例：
+- 使用 @AutoController 注解时需 use Hyperf\HttpServer\Annotation\AutoController; 命名空间；
 
-控制器	注解	访问路由
+- 驼峰命名的控制器，会自动转化为蛇形路由，以下为控制器与实际路由的对应关系示例：
+
+- 控制器	注解	访问路由
+```
 MyDataController	@AutoController()	/my_data/index
 MydataController	@AutoController()	/mydata/index
 MyDataController	@AutoController(prefix="/data")	/data/index
@@ -135,19 +150,21 @@ class IndexController
         return (string)$id;
     }
 }
-Copy to clipboardErrorCopied
-通过 @Controller 注解定义路由
-@Controller 为满足更细致的路由定义需求而存在，使用 @Controller 注解用于表明当前类为一个 Controller 类，同时需配合 @RequestMapping 注解来对请求方法和请求路径进行更详细的定义。
-我们也提供了多种快速便捷的 Mapping 注解，如 @GetMapping、@PostMapping、@PutMapping、@PatchMapping、@DeleteMapping 5 种便捷的注解用于表明允许不同的请求方法。
+```
 
-使用 @Controller 注解时需 use Hyperf\HttpServer\Annotation\Controller; 命名空间；
-使用 @RequestMapping 注解时需 use Hyperf\HttpServer\Annotation\RequestMapping; 命名空间；
-使用 @GetMapping 注解时需 use Hyperf\HttpServer\Annotation\GetMapping; 命名空间；
-使用 @PostMapping 注解时需 use Hyperf\HttpServer\Annotation\PostMapping; 命名空间；
-使用 @PutMapping 注解时需 use Hyperf\HttpServer\Annotation\PutMapping; 命名空间；
-使用 @PatchMapping 注解时需 use Hyperf\HttpServer\Annotation\PatchMapping; 命名空间；
-使用 @DeleteMapping 注解时需 use Hyperf\HttpServer\Annotation\DeleteMapping; 命名空间；
+- 通过 @Controller 注解定义路由
+- @Controller 为满足更细致的路由定义需求而存在，使用 @Controller 注解用于表明当前类为一个 Controller 类，同时需配合 @RequestMapping 注解来对请求方法和请求路径进行更详细的定义。
+- 我们也提供了多种快速便捷的 Mapping 注解，如 @GetMapping、@PostMapping、@PutMapping、@PatchMapping、@DeleteMapping 5 种便捷的注解用于表明允许不同的请求方法。
 
+- 使用 @Controller 注解时需 use Hyperf\HttpServer\Annotation\Controller; 命名空间；
+- 使用 @RequestMapping 注解时需 use Hyperf\HttpServer\Annotation\RequestMapping; 命名空间；
+- 使用 @GetMapping 注解时需 use Hyperf\HttpServer\Annotation\GetMapping; 命名空间；
+- 使用 @PostMapping 注解时需 use Hyperf\HttpServer\Annotation\PostMapping; 命名空间；
+- 使用 @PutMapping 注解时需 use Hyperf\HttpServer\Annotation\PutMapping; 命名空间；
+- 使用 @PatchMapping 注解时需 use Hyperf\HttpServer\Annotation\PatchMapping; 命名空间；
+- 使用 @DeleteMapping 注解时需 use Hyperf\HttpServer\Annotation\DeleteMapping; 命名空间；
+
+```
 <?php
 declare(strict_types=1);
 
@@ -173,12 +190,14 @@ class IndexController
         return (string)$id;
     }
 }
-Copy to clipboardErrorCopied
-处理 HTTP 请求
-Hyperf 是完全开放的，本质上没有规定您必须基于某种模式下去实现请求的处理，您可以采用传统的 MVC 模式，亦可以采用 RequestHandler 模式 来进行开发。
-我们以 MVC 模式 来举个例子：
-在 app 文件夹内创建一个 Controller 文件夹并创建 IndexController.php 如下，index 方法内从请求中获取了 id 参数，并转换为 字符串 类型返回到客户端。
+```
 
+- 处理 HTTP 请求
+- Hyperf 是完全开放的，本质上没有规定您必须基于某种模式下去实现请求的处理，您可以采用传统的 MVC 模式，亦可以采用 RequestHandler 模式 来进行开发。
+- 我们以 MVC 模式 来举个例子：
+- 在 app 文件夹内创建一个 Controller 文件夹并创建 IndexController.php 如下，index 方法内从请求中获取了 id 参数，并转换为 字符串 类型返回到客户端。
+
+```
 <?php
 declare(strict_types=1);
 
@@ -201,15 +220,17 @@ class IndexController
         return (string)$id;
     }
 }
-Copy to clipboardErrorCopied
-依赖自动注入
-依赖自动注入是 Hyperf 提供的一个非常强大的功能，也是保持框架灵活性的根基。
-Hyperf 提供了两种注入方式，一种是大家常见的通过构造函数注入，另一种是通过 @Inject 注解注入，下面我们举个例子并分别以两种方式展示注入的实现；
-假设我们存在一个 \App\Service\UserService 类，类中存在一个 getInfoById(int $id) 方法通过传递一个 id 并最终返回一个用户实体，由于返回值并不是我们这里所需要关注的，所以不做过多阐述，我们要关注的是在任意的类中获取 UserService 并调用里面的方法，一般的方法是通过 new UserService() 来实例化该服务类，但在 Hyperf 下，我们有更优的解决方法。
+```
 
-通过构造函数注入
-只需在构造函数的参数内声明参数的类型，Hyperf 会自动注入对应的对象或值。
+- 依赖自动注入
+- 依赖自动注入是 Hyperf 提供的一个非常强大的功能，也是保持框架灵活性的根基。
+- Hyperf 提供了两种注入方式，一种是大家常见的通过构造函数注入，另一种是通过 @Inject 注解注入，下面我们举个例子并分别以两种方式展示注入的实现；
+- 假设我们存在一个 \App\Service\UserService 类，类中存在一个 getInfoById(int $id) 方法通过传递一个 id 并最终返回一个用户实体，由于返回值并不是我们这里所需要关注的，所以不做过多阐述，我们要关注的是在任意的类中获取 UserService 并调用里面的方法，一般的方法是通过 new UserService() 来实例化该服务类，但在 Hyperf 下，我们有更优的解决方法。
 
+- 通过构造函数注入
+- 只需在构造函数的参数内声明参数的类型，Hyperf 会自动注入对应的对象或值。
+
+```
 <?php
 declare(strict_types=1);
 
@@ -242,12 +263,14 @@ class IndexController
         return $this->userService->getInfoById((int)$id);
     }
 }
-Copy to clipboardErrorCopied
-通过 @Inject 注解注入
-只需对对应的类属性通过 @var 声明参数的类型，并使用 @Inject 注解标记属性 ，Hyperf 会自动注入对应的对象或值。
+```
 
-使用 @Inject 注解时需 use Hyperf\Di\Annotation\Inject; 命名空间；
+- 通过 @Inject 注解注入
+- 只需对对应的类属性通过 @var 声明参数的类型，并使用 @Inject 注解标记属性 ，Hyperf 会自动注入对应的对象或值。
 
+- 使用 @Inject 注解时需 use Hyperf\Di\Annotation\Inject; 命名空间；
+
+```
 <?php
 declare(strict_types=1);
 
@@ -276,29 +299,31 @@ class IndexController
         return $this->userService->getInfoById((int)$id);
     }
 }
-Copy to clipboardErrorCopied
-通过上面的示例我们不难发现 $userService 在没有实例化的情况下， 属性对应的类对象被自动注入了。
-不过这里的案例并未真正体现出依赖自动注入的好处及其强大之处，我们假设一下 UserService 也存在很多的依赖，而这些依赖同时又存在很多其它的依赖时，new 实例化的方式就需要手动实例化很多的对象并调整好对应的参数位，而在 Hyperf 里我们就无须手动管理这些依赖，只需要声明一下最终使用的类即可。
-而当 UserService 需要发生替换等剧烈的内部变化时，比如从一个本地服务替换成了一个 RPC 远程服务，也只需要通过配置调整依赖中 UserService 这个键值对应的类为新的 RPC 服务类即可。
+```
 
-启动 Hyperf 服务
-由于 Hyperf 内置了协程服务器，也就意味着 Hyperf 将以 CLI 的形式去运行，所以在定义好路由及实际的逻辑代码之后，我们需要在项目根目录并通过命令行运行 php bin/hyperf.php start 来启动服务。
-当 Console 界面显示服务启动后便可通过 cURL 或 浏览器对服务正常发起访问了，默认服务会提供一个首页 http://127.0.0.1:9501/，对于本章示例引导的情况下，也就是上面的例子所对应的访问地址为 http://127.0.0.1:9501/index/info?id=1。
+- 通过上面的示例我们不难发现 $userService 在没有实例化的情况下， 属性对应的类对象被自动注入了。
+- 不过这里的案例并未真正体现出依赖自动注入的好处及其强大之处，我们假设一下 UserService 也存在很多的依赖，而这些依赖同时又存在很多其它的依赖时，new 实例化的方式就需要手动实例化很多的对象并调整好对应的参数位，而在 Hyperf 里我们就无须手动管理这些依赖，只需要声明一下最终使用的类即可。
+- 而当 UserService 需要发生替换等剧烈的内部变化时，比如从一个本地服务替换成了一个 RPC 远程服务，也只需要通过配置调整依赖中 UserService 这个键值对应的类为新的 RPC 服务类即可。
 
-重新加载代码
-由于 Hyperf 是持久化的 CLI 应用，也就意味着一旦进程启动，已解析的 PHP 代码会持久化在进程中，也就意味着启动服务后您再修改的 PHP 代码不会改变已启动的服务，如您希望服务重新加载您修改后的代码，您需要通过在启动的 Console 中键入 CTRL + C 终止服务，再重新执行启动命令 php bin/hyperf.php start 完成启动和重新加载。
+#### 启动 Hyperf 服务
+- 由于 Hyperf 内置了协程服务器，也就意味着 Hyperf 将以 CLI 的形式去运行，所以在定义好路由及实际的逻辑代码之后，我们需要在项目根目录并通过命令行运行 php bin/hyperf.php start 来启动服务。
+- 当 Console 界面显示服务启动后便可通过 cURL 或 浏览器对服务正常发起访问了，默认服务会提供一个首页 http://127.0.0.1:9501/，对于本章示例引导的情况下，也就是上面的例子所对应的访问地址为 http://127.0.0.1:9501/index/info?id=1。
 
-Tips: 您也可以将启动 Server 的命令配置在 IDE 上，便可直接通过 IDE 的 启动/停止 操作快捷的完成 启动服务 或 重启服务 的操作。 且非视图开发时可以采用 TDD(Test-Driven Development) 测试驱动开发来进行开发，这样不仅可以省略掉服务重启和频繁切换窗口的麻烦，还可保证接口数据的正确性。
+#### 重新加载代码
+- 由于 Hyperf 是持久化的 CLI 应用，也就意味着一旦进程启动，已解析的 PHP 代码会持久化在进程中，也就意味着启动服务后您再修改的 PHP 代码不会改变已启动的服务，如您希望服务重新加载您修改后的代码，您需要通过在启动的 Console 中键入 CTRL + C 终止服务，再重新执行启动命令 php bin/hyperf.php start 完成启动和重新加载。
 
-另外，在文档 协程组件库 一章中提供了多种由社区开发者支持的 热更新/热重载 的解决方案，如仍希望采用 热更新/热重载 方案可再深入了解。
+- Tips: 您也可以将启动 Server 的命令配置在 IDE 上，便可直接通过 IDE 的 启动/停止 操作快捷的完成 启动服务 或 重启服务 的操作。 且非视图开发时可以采用 TDD(Test-Driven Development) 测试驱动开发来进行开发，这样不仅可以省略掉服务重启和频繁切换窗口的麻烦，还可保证接口数据的正确性。
 
-多端口监听
-Hyperf 支持监听多个端口，但因为 callbacks 中的对象直接从容器中获取，所以相同的 Hyperf\HttpServer\Server::class 会在容器中被覆盖。所以我们需要在依赖关系中，重新定义 Server，确保对象隔离。
+- 另外，在文档 协程组件库 一章中提供了多种由社区开发者支持的 热更新/热重载 的解决方案，如仍希望采用 热更新/热重载 方案可再深入了解。
 
-WebSocket 和 TCP 等 Server 同理。
+#### 多端口监听
+- Hyperf 支持监听多个端口，但因为 callbacks 中的对象直接从容器中获取，所以相同的 Hyperf\HttpServer\Server::class 会在容器中被覆盖。所以我们需要在依赖关系中，重新定义 Server，确保对象隔离。
 
-config/autoload/dependencies.php
+- WebSocket 和 TCP 等 Server 同理。
 
+- config/autoload/dependencies.php
+
+```
 <?php
 
 return [
@@ -332,16 +357,19 @@ return [
         ],
     ]
 ];
-Copy to clipboardErrorCopied
-同时 路由文件，或者 注解 也需要指定对应的 server，如下：
+```
 
-路由文件 config/routes.php
+- 同时 路由文件，或者 注解 也需要指定对应的 server，如下：
+
+- 路由文件 config/routes.php
+```
 <?php
 Router::addServer('innerHttp', function () {
     Router::get('/', 'App\Controller\IndexController@index');
 });
-Copy to clipboardErrorCopied
-注解
+```
+- 注解
+```
 <?php
 
 declare(strict_types=1);
@@ -360,9 +388,10 @@ class IndexController
         return 'Hello World.';
     }
 }
-Copy to clipboardErrorCopied
-事件
-除上述提到的 Event::ON_REQUEST 事件，框架还支持其他事件，所有事件名如下。
+```
+
+- 事件
+- 除上述提到的 Event::ON_REQUEST 事件，框架还支持其他事件，所有事件名如下。
 
 事件名	备注
 Event::ON_REQUEST
@@ -384,13 +413,14 @@ Event::ON_MANAGER_START
 Event::ON_MANAGER_STOP
 
 
-常见问题
-Inject 或 Value 注解不生效
-2.0 使用了构造函数中注入 Inject 和 Value 的功能，以下两种场景，可能会导致注入失效，请注意使用。
+- 常见问题
+- Inject 或 Value 注解不生效
+- 2.0 使用了构造函数中注入 Inject 和 Value 的功能，以下两种场景，可能会导致注入失效，请注意使用。
 
-原类没有使用 Inject 或 Value，但父类使用了 Inject 或 Value，且原类写了构造函数，同时又没有调用父类构造函数的情况。
-这样就会导致原类不会生成代理类，而实例化的时候又调用了自身的构造函数，故没办法执行到父类的构造函数。 所以父类代理类中的方法 __handlePropertyHandler 就不会执行，那么 Inject 或 Value 注解就不会生效。
+- 原类没有使用 Inject 或 Value，但父类使用了 Inject 或 Value，且原类写了构造函数，同时又没有调用父类构造函数的情况。
+- 这样就会导致原类不会生成代理类，而实例化的时候又调用了自身的构造函数，故没办法执行到父类的构造函数。 所以父类代理类中的方法 __handlePropertyHandler 就不会执行，那么 Inject 或 Value 注解就不会生效。
 
+```
 class ParentClass {
     /**
      * @Inject
@@ -403,10 +433,12 @@ class Origin extends ParentClass
 {
     public function __construct() {}
 }
-Copy to clipboardErrorCopied
-原类没有使用 Inject 或 Value，但 Trait 中使用了 Inject 或 Value。
-这样就会导致原类不会生成代理类，故没办法执行构造函数里的 __handlePropertyHandler，所以 Trait 的 Inject 或 Value 注解就不会生效。
+```
 
+- 原类没有使用 Inject 或 Value，但 Trait 中使用了 Inject 或 Value。
+- 这样就会导致原类不会生成代理类，故没办法执行构造函数里的 __handlePropertyHandler，所以 Trait 的 Inject 或 Value 注解就不会生效。
+
+```
 trait OriginTrait {
     /**
      * @Inject
@@ -419,10 +451,11 @@ class Origin
 {
     use OriginTrait;
 }
-Copy to clipboardErrorCopied
-基于上述两种情况，可见 原类 是否生成代理类至关重要，所以，如果使用了带有 Inject 或 Value 的 Trait 和 父类 时，给原类添加一个 Inject，即可解决上述两种情况。
+```
 
+- 基于上述两种情况，可见 原类 是否生成代理类至关重要，所以，如果使用了带有 Inject 或 Value 的 Trait 和 父类 时，给原类添加一个 Inject，即可解决上述两种情况。
 
+```
 use Hyperf\Contract\StdoutLoggerInterface;
 
 trait OriginTrait {
@@ -451,26 +484,31 @@ class Origin extends ParentClass
      */
     protected $logger;
 }
+```
+
+##### Swoole 短名未关闭
+- [ERROR] Swoole short name have to disable before start server, please set swoole.use_shortname = 'Off' into your php.ini.
 Copy to clipboardErrorCopied
-Swoole 短名未关闭
-[ERROR] Swoole short name have to disable before start server, please set swoole.use_shortname = 'Off' into your php.ini.
-Copy to clipboardErrorCopied
-您需要在您的 php.ini 配置文件增加 swoole.use_shortname = 'Off' 配置项
 
-注意该配置必须于 php.ini 内配置，无法通过 ini_set() 函数来重写
+- 您需要在您的 php.ini 配置文件增加 swoole.use_shortname = 'Off' 配置项
 
-当然，也可以通过以下的命令来启动服务，在执行 PHP 命令时关闭掉 Swoole 短名功能
+- 注意该配置必须于 php.ini 内配置，无法通过 ini_set() 函数来重写
 
+- 当然，也可以通过以下的命令来启动服务，在执行 PHP 命令时关闭掉 Swoole 短名功能
+
+```
 php -d swoole.use_shortname=Off bin/hyperf.php start
-Copy to clipboardErrorCopied
-异步队列消息丢失
-如果在使用 async-queue 组件时，发现 handle 中的方法没有执行，请先检查以下几种情况：
+```
 
-Redis 是否与其他人共用，消息被其他人消费走
-本地进程是否存在残余，被其他进程消费掉
-以下提供万无一失的解决办法：
+##### 异步队列消息丢失
+- 如果在使用 async-queue 组件时，发现 handle 中的方法没有执行，请先检查以下几种情况：
 
+- Redis 是否与其他人共用，消息被其他人消费走
+- 本地进程是否存在残余，被其他进程消费掉
+- 以下提供万无一失的解决办法：
+```
 killall php
+```
 修改 async-queue 配置 channel
 使用 AMQP 组件报 Swoole\Error: API must be called in the coroutine 错误
 可以在 config/autoload/amqp.php 配置文件中将 params.close_on_destruct 改为 false 即可。
@@ -1973,6 +2011,7 @@ Copy to clipboardErrorCopied
 
 您也可以通过 @Aspect 注解本身的属性来完成切入目标的配置，通过下面注解的形式可以达到与上面的示例一样的目的：
 
+```php
 <?php
 namespace App\Aspect;
 
@@ -2006,7 +2045,8 @@ class FooAspect extends AbstractAspect
         return $result;
     }
 }
-Copy to clipboardErrorCopied
+```
+
 代理类缓存
 所有被 AOP 影响的类，都会在 ./runtime/container/proxy/ 文件夹内生成对应的 代理类缓存，是否在启动时自动生成取决于 config/config.php 配置文件中 scan_cacheable 配置项的值，默认值为 false，如果该配置项为 true 则 Hyperf 不会扫描和生成代理类缓存，而是直接以现有的缓存文件作为最终的代理类。如果该配置项为 false，则 Hyperf 会在每次启动应用时扫描注解扫描域并自动的生成对应的代理类缓存，当代码发生变化时，代理类缓存也会自动的重新生成。
 
